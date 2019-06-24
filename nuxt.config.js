@@ -54,7 +54,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.API_BASE_URL || 'https://139.59.243.123',
+    baseURL: process.env.API_BASE_URL || 'https://logger-api.southeastasia.cloudapp.azure.com',
   },
   /*
   ** vuetify module configuration
