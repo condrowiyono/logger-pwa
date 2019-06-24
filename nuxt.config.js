@@ -16,6 +16,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap' },
       {
         rel: 'stylesheet',
         href:
@@ -47,8 +48,12 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    '@nuxtjs/toast',
   ],
+  toast: {
+    position: 'bottom-center',
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

@@ -31,11 +31,34 @@
           </v-list-tile>
         </v-list>
       </div>
-      <div v-if="tab = 'scan'">
+      <div v-if="tab == 'scan'">
         <p class="error">{{ error }}</p>
-        <v-container>
-          <b>RESULT : {{result}} </b>
+        <v-container v-if="!error">
+          <v-toolbar class="elevation-0"> 
+            Result : 
+            <span style="font-family: 'Oxygen Mono', monospace;">213120313</span> 
+            <v-spacer/>
+            <v-btn flat color="primary">PROSES</v-btn>
+          </v-toolbar>
           <qrcode-stream @decode="onDecode" @init="onInit" />
+          <!-- <div style="width:379px;height:379px;background-color:aqua"/> -->
+          <v-divider style="margin-top:10px" />
+        </v-container>
+        <v-container>
+          <p style="text-align:center" class="grey--text text--darken-3">Atau masukkan kode manual</p>
+          <v-container fluid>
+            <v-layout row>
+              <v-flex pa-1 >
+                <v-text-field
+                  style="font-family: 'Oxygen Mono', monospace;"
+                  label="Kode Barang"
+                ></v-text-field>
+              </v-flex>
+              <v-flex pa-1 >
+                <v-btn flat color="primary">PROSES</v-btn>                
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-container>
       </div>
     </v-flex>
@@ -49,7 +72,7 @@
         color="blue"
         flat
         value="home"
-        @click="title = 'Logger PWA'"
+        @click="changeTab('home')"
       >
         <span>Beranda</span>
         <v-icon>home</v-icon>
@@ -58,7 +81,7 @@
         color="blue"
         flat
         value="scan"
-        @click="title = 'Scan'"
+        @click="changeTab('scan')"
       >
         <span>Scan</span>
         <v-icon>camera_alt</v-icon>
@@ -67,7 +90,7 @@
         color="blue"
         flat
         value="history"
-        @click="title = 'Riwayat'"
+        @click="changeTab('history')"
       >
         <span>Riwayat</span>
         <v-icon>history</v-icon>
@@ -77,7 +100,7 @@
         color="blue"
         flat
         value="account"
-        @click="title = 'Akun'"
+        @click="changeTab('account')"
       >
         <span>Akun</span>
         <v-icon>person</v-icon>
@@ -100,11 +123,16 @@ export default {
     }
   },
   methods: {
+    changeTab(to) {
+      this.$router.replace({ path: '/', query: { tab: to } });
+      this.title = to;
+    },
     async logout() {
       await this.$auth.logout();
     },
     onDecode(result) {
       this.result = result;
+      this.$toast.show(`QR Code terdeteksi :  ${this.result}`)
     },
     async onInit (promise) {
       try {
