@@ -36,7 +36,7 @@
         <v-container v-if="!error">
           <v-toolbar class="elevation-0"> 
             Result : 
-            <span style="font-family: 'Oxygen Mono', monospace;">213120313</span> 
+            <span style="font-family: 'Oxygen Mono', monospace;">{{result}}</span> 
             <v-spacer/>
             <v-btn flat color="primary">PROSES</v-btn>
           </v-toolbar>
