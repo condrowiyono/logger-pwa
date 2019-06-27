@@ -153,7 +153,7 @@ export default {
     },
     onDecode(result) {
       this.result = result;
-      afterDecode(result)
+      this.afterDecode(result)
     },
     afterDecode(result) {
       this.$axios.get(`/equipments/get-by-qrcode/${result}`,{validateStatus: () => true})
