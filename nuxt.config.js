@@ -49,11 +49,9 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
-    '@nuxtjs/toast',
+    'vuetify-dialog/nuxt',
+    ['@nuxtjs/moment', ['id']]
   ],
-  toast: {
-    position: 'bottom-center',
-  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

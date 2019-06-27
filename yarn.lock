@@ -1254,6 +1254,14 @@
   resolved "https://registry.yarnpkg.com/@nuxtjs/meta/-/meta-2.6.0.tgz#cc8fd2a019fb3e2e1feaa78abefee3a6a6aed477"
   integrity sha512-DrH+kmFEEKxjtZjRi2R0hfHDni+Ba2v4a47V5TwftLeshP31no9KKc1Ae6whLB+X+caC1tv3lR5CHbFmBgLC7Q==
 
+"@nuxtjs/moment@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/moment/-/moment-1.2.0.tgz#f34c6e90786cff5d8906058adfb8f312a454f6ce"
+  integrity sha512-UgS7AEFx0G59umXvs23GTCUd9n/J9MqIEvw5iJ4RITnn8HJ+aXF2NCNs379nTKHMGBsgHpy6I+Pkpcsrt2+QVQ==
+  dependencies:
+    moment "^2.24.0"
+    moment-locales-webpack-plugin "^1.0.7"
+
 "@nuxtjs/proxy@^1.3.3":
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/@nuxtjs/proxy/-/proxy-1.3.3.tgz#3de3d9f073e8e57167168100940be2a824a220e0"
@@ -1271,13 +1279,6 @@
     "@nuxtjs/manifest" "^2.6.0"
     "@nuxtjs/meta" "^2.6.0"
     "@nuxtjs/workbox" "^2.6.0"
-
-"@nuxtjs/toast@^3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/toast/-/toast-3.2.1.tgz#b104c9139d609cf0966287aba38fa430e89d2c09"
-  integrity sha512-unMXSoTrrg6ql4slP41Zasui5UebK6wjSXPyCng4KfSMRnjyuDBODKyundQaMHl9whZYzIi4MZPbKNX376yeIw==
-  dependencies:
-    vue-toasted "^1.1.27"
 
 "@nuxtjs/vuetify@0.5.5":
   version "0.5.5"
@@ -3115,6 +3116,13 @@ dom-walk@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
   integrity sha1-ZyIm3HTI95mtNTB9+TaroRrNYBg=
+
+dom7@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/dom7/-/dom7-2.1.3.tgz#a736f9c3bfbc4ca039a81cd095f97d1d7f3de19c"
+  integrity sha512-QTxHHDox+M6ZFz1zHPAHZKI3JOHY5iY4i9BK2uctlggxKQwRhO3q3HHFq1BKsT25Bm/ySSj70K6Wk/G4bs9rMQ==
+  dependencies:
+    ssr-window "^1.0.1"
 
 domain-browser@^1.1.1:
   version "1.2.0"
@@ -5070,10 +5078,20 @@ lodash._reinterpolate@~3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
+lodash.assign@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
+  integrity sha1-DZnzzNem0mHRm9rrkkUAXShYCOc=
+
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+
+lodash.difference@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.difference/-/lodash.difference-4.5.0.tgz#9ccb4e505d486b91651345772885a2df27fd017c"
+  integrity sha1-nMtOUF1Ia5FlE0V3KIWi3yf9AXw=
 
 lodash.isplainobject@^4.0.6:
   version "4.0.6"
@@ -5089,6 +5107,11 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.merge@^4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
+  integrity sha512-AOYza4+Hf5z1/0Hztxpm2/xiPZgi/cjMqdnKTUWTBSKchJlxXXuUSxCCl8rJlf4g6yww/j6mA8nC8Hw/EZWxKQ==
 
 lodash.template@^4.2.4, lodash.template@^4.4.0:
   version "4.4.0"
@@ -5361,6 +5384,18 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+moment-locales-webpack-plugin@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/moment-locales-webpack-plugin/-/moment-locales-webpack-plugin-1.0.7.tgz#ce2931b8a25100dae0868adbd9e93972dcb33359"
+  integrity sha512-KjYpaAhmuzGFZl6534FlZoK7QtW3vqlxd+A17W9DlgHJ5yhXANy7AZJl7iYtZpWjAfMTAWiVrQ7YDZdkFO6uRw==
+  dependencies:
+    lodash.difference "^4.5.0"
+
+moment@^2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -6070,6 +6105,11 @@ pngjs@^3.0.0, pngjs@^3.3.3:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.4.0.tgz#99ca7d725965fb655814eaf65f38f12bbdbf555f"
   integrity sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==
+
+popper.js@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
+  integrity sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
@@ -6876,6 +6916,11 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qrcode-js-package@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/qrcode-js-package/-/qrcode-js-package-1.0.4.tgz#ba11f7f672b537013c380d033e3baa865d07b5bd"
+  integrity sha1-uhH39nK1NwE8OA0DPjuqhl0Htb0=
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
@@ -7539,6 +7584,11 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
+ssr-window@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-1.0.1.tgz#30752a6a4666e7767f0b7e6aa6fc2fdbd0d9b369"
+  integrity sha512-dgFqB+f00LJTEgb6UXhx0h+SrG50LJvti2yMKMqAgzfUmUXZrLSv2fjULF7AWGwK25EXu8+smLR3jYsJQChPsg==
+
 ssri@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
@@ -7813,6 +7863,14 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+swiper@^4.0.7:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-4.5.0.tgz#4d870bec4f5abe2fb259325849dd2641c9243c0d"
+  integrity sha512-jRCd/CGet9kaHwthHdd/sL/YU8CI157PWLyItnIcn/o/jP4haVky3zTF6f9F3JDpmQIw7jdWihISiYx0/oTHsg==
+  dependencies:
+    dom7 "^2.1.3"
+    ssr-window "^1.0.1"
 
 table@^5.2.3:
   version "5.4.1"
@@ -8325,6 +8383,19 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha512-iq+S7vZJE60yejDYM0ek6zg308+UZsdtPExWP9VZoCFCz1zkJoXFnAX7aZfd/ZwrkidzdUZL0C/ryW+JwAiIGw==
 
+vue-asyncable@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/vue-asyncable/-/vue-asyncable-0.2.0.tgz#90221cba76fa8601b1331231b1a7c91cd8403f83"
+  integrity sha512-AKuYhnjwMVrOgPct9WYbK4S7aMaHbWbznWY8IrCJsHS0pyEZc7lnpilJLGhH3MmRoQL43M0ofPJyHuxnu30McQ==
+
+vue-awesome-swiper@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/vue-awesome-swiper/-/vue-awesome-swiper-3.1.3.tgz#05500b501ffb3fec9bf7eb9985bcf4ae8360ed9e"
+  integrity sha512-E7suzkyApO8vNZbgdEnjSmnpsmQZyRvSVXJ7sey3XYwKPOkLhH3+GnHroBw+5PZIQXvWBwdCeQsPG1xQ1r1Rhg==
+  dependencies:
+    object-assign "^4.1.1"
+    swiper "^4.0.7"
+
 vue-eslint-parser@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-5.0.0.tgz#00f4e4da94ec974b821a26ff0ed0f7a78402b8a1"
@@ -8341,6 +8412,20 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"
   integrity sha512-KmvZVtmM26BQOMK1rwUZsrqxEGeKiYSZGA7SNWE6uExx8UX/cj9hq2MRV/wWC3Cq6AoeDGk57rL9YMFRel/q+g==
+
+vue-image-lightbox-carousel@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/vue-image-lightbox-carousel/-/vue-image-lightbox-carousel-1.0.7.tgz#f628b149f28b72ab282d00b21811521f138bcfa9"
+  integrity sha512-a3y2Nd5EupVseJaCb8xQu1IbE4JEjOKjb5qmHO98En9MRjWDOOKspE3SUyUir1/HpyYY+6Wg3VgrjURsDFZM2A==
+  dependencies:
+    vue "^2.5.11"
+    vue-awesome-swiper "^3.1.3"
+    vue-lazyload "^1.2.6"
+
+vue-lazyload@^1.2.6:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-1.3.0.tgz#4d72adb7fdc997bf2a21441615e3a05af37a6f35"
+  integrity sha512-7CP14vLdRnmyxBjasbp3nVDVq2DLYRUctJhw/ZUaWcBo0poN2hldauoi1L4fhjIAUapUhySg6b3hE0xjd/LecQ==
 
 vue-loader@^15.7.0:
   version "15.7.0"
@@ -8367,6 +8452,21 @@ vue-no-ssr@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
+
+vue-popperjs@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/vue-popperjs/-/vue-popperjs-2.0.4.tgz#e863a179ee2b5ce0039009c172a02d3473fc8f07"
+  integrity sha512-9fCE0k8ze8rP+Iif+zpAiJyFpeQDs2RxPYnwuXNedrFdrlQkiYCp/pWytLA25dJ21850ag9XCWZUR6soMvjR9g==
+  dependencies:
+    popper.js "^1.15.0"
+
+vue-qrcode-component@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/vue-qrcode-component/-/vue-qrcode-component-2.1.1.tgz#72c37567ad90bca2a9372456bd2884f0f43edf38"
+  integrity sha1-csN1Z62QvKKpNyRWvSiE8PQ+3zg=
+  dependencies:
+    qrcode-js-package "^1.0.4"
+    vue "^2.0.1"
 
 vue-qrcode-reader@^2.0.1:
   version "2.0.1"
@@ -8417,15 +8517,25 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue-toasted@^1.1.27:
-  version "1.1.27"
-  resolved "https://registry.yarnpkg.com/vue-toasted/-/vue-toasted-1.1.27.tgz#ce0a74b875f90c2e4a9e163cce6d5fc37d78a07c"
-  integrity sha512-GVbwInwnqkVxQ4GU/XYeQt1e0dAXL8sF5Hr1H/coCBbYUan5xP0G2mEz/HRDf1lt73rFQAN/bJcLTOKkqiM6tg==
-
-vue@^2.6.10:
+vue@^2.0.1, vue@^2.5.11, vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
+
+vuedl@^0.3.1:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/vuedl/-/vuedl-0.3.2.tgz#d1695e554eb420f54a156b2c6d3a12914bddd221"
+  integrity sha512-enWLm5M+xbVjUZKDcAiIxXrXnWnAe+nq+VEx9TysDNx1EzhQSc7gf7W15NFpmr2L2rAPUYW8R7nnRjSPwHVaSQ==
+  dependencies:
+    vue-asyncable "^0.2.0"
+
+vuetify-dialog@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/vuetify-dialog/-/vuetify-dialog-0.3.6.tgz#caaccf0112873bfdfbb74fe7c17e31b3d62d2d20"
+  integrity sha512-HyFk1Sapamv1h8Mk/VlukN+xLZCNgxpsuW+VaYiNUC8tbHkmxbV5W0w+Kp8FCjeP58AwppWAvQcjnfwc9nyesQ==
+  dependencies:
+    vue-asyncable "^0.2.0"
+    vuedl "^0.3.1"
 
 vuetify@^1.5.1:
   version "1.5.16"

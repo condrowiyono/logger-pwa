@@ -1,0 +1,51 @@
+<template>
+  <v-layout>
+    <toolbar :back="'/?tab=account'" :title="'Akun Saya'" />
+      <v-flex  xs-12>
+        <v-list two-line >
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title>Nama</v-list-tile-sub-title>
+              <v-list-tile-title>{{$auth.user.name}}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title>Username</v-list-tile-sub-title>
+              <v-list-tile-title>{{$auth.user.username}}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title>Nomor HP</v-list-tile-sub-title>
+              <v-list-tile-title>{{$auth.user.phoneNumber}}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title>Email</v-list-tile-sub-title>
+              <v-list-tile-title>{{$auth.user.email}}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title>Role</v-list-tile-sub-title>
+              <v-list-tile-title>{{$auth.user.role}}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title>Posisi</v-list-tile-sub-title>
+              <v-list-tile-title>{{$auth.user.position}}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-sub-title>Alamat</v-list-tile-sub-title>
+              <v-list-tile-title>{{$auth.user.address}}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-flex>
+  </v-layout>
+</template>

@@ -1,16 +1,31 @@
 <template>
   <v-layout>
     <toolbar :title="title" />
-    <v-flex xs-12>
-      <div v-if="tab== 'account'">
+    <v-flex xs-12 >
+      <div v-if="tab== 'account'" style="margin-bottom:60px">
+        <v-list  subheader>
+          <v-subheader>Informasi Akun</v-subheader>
+          <v-list-tile :to="'/account'"  ripple="ripple">
+            <v-list-tile-content>
+              <v-list-tile-title>{{ $auth.user.name }}</v-list-tile-title>
+              <v-list-tile-sub-title>{{ $auth.user.phoneNumber }}</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile :to="'/change-password'" ripple="ripple">
+            <v-list-tile-content>
+              <v-list-tile-title>Ganti Password</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+        <v-divider/>
         <v-list two-line subheader>
-            <v-subheader>General</v-subheader>
-            <v-list-tile  ripple="ripple">
-              <v-list-tile-content>
-                <v-list-tile-title>{{ $auth.user.name }}</v-list-tile-title>
-                <v-list-tile-sub-title>{{ $auth.user.phoneNumber }}</v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
+          <v-subheader>Alat</v-subheader>
+          <v-list-tile :to="'/equipments'"  ripple="ripple">
+            <v-list-tile-content>
+              <v-list-tile-title>Peralatan</v-list-tile-title>
+              <v-list-tile-sub-title>Lihat semua peraltan</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
         </v-list>
         <v-divider/>
         <v-list>
@@ -31,7 +46,7 @@
           </v-list-tile>
         </v-list>
       </div>
-      <div v-if="tab == 'scan'">
+      <div v-if="tab == 'scan'" style="margin-bottom:60px">
         <p class="error">{{ error }}</p>
         <v-container v-if="!error">
           <v-toolbar class="elevation-0"> 
@@ -47,27 +62,30 @@
         <v-container>
           <p style="text-align:center" class="grey--text text--darken-3">Atau masukkan kode manual</p>
           <v-container fluid>
-            <v-layout row>
-              <v-flex pa-1 >
-                <v-text-field
-                  style="font-family: 'Oxygen Mono', monospace;"
-                  label="Kode Barang"
-                ></v-text-field>
-              </v-flex>
-              <v-flex pa-1 >
-                <v-btn flat color="primary">PROSES</v-btn>                
-              </v-flex>
-            </v-layout>
+              <v-text-field
+                style="font-family: 'Oxygen Mono', monospace;"
+                label="Kode Barang"
+                v-model="resultManual"
+                box></v-text-field>
+              <div style="justify-content:flex-end; display:flex" >
+                <v-btn
+                  color="primary"
+                  @click="afterDecode(resultManual)">
+                  Proses
+                </v-btn>
+            </div>            
           </v-container>
         </v-container>
+      </div>
+      <div v-if="tab == 'history'" style="margin-bottom:60px">
+        <history />
       </div>
     </v-flex>
     <v-bottom-nav
       :active.sync="tab"
       :value="true"
       fixed
-      color="#fff"
-    >
+      color="#fff">
       <v-btn
         color="blue"
         flat
@@ -111,14 +129,17 @@
 
 <script>
 import { QrcodeStream } from 'vue-qrcode-reader';
+import {mapState} from 'vuex';
+import History from '~/components/history';
 
 export default {
-  components: { QrcodeStream },
+  components: { QrcodeStream, History },
   data () {
     return {
       tab: (this.$route.query.tab) ? this.$route.query.tab : 'home',
       title: (this.$route.query.tab) ? this.$route.query.tab : 'Beranda',
       result: '',
+      resultManual: '',
       error: ''
     }
   },
@@ -132,7 +153,36 @@ export default {
     },
     onDecode(result) {
       this.result = result;
-      this.$toast.show(`QR Code terdeteksi :  ${this.result}`)
+      afterDecode(result)
+    },
+    afterDecode(result) {
+      this.$axios.get(`/equipments/get-by-qrcode/${result}`,{validateStatus: () => true})
+        .then((res) => {
+          if (res.status === 200) {
+            this.$dialog.warning({
+              persistent: true,
+              title: 'Barang Terdeteksi',
+              text: `Kode Barang terdeteksi apakah Anda ingin mencatat log untuk barang ini <br><br> Nama Barang : <br><b>${res.data.data.name}</b>`,
+              actions: {
+                false: 'Tidak',
+                true: {
+                  text: 'Lanjut',
+                  handle: () => {
+                    this.$router.push({path:'/logs/new', query: {id: res.data.data.id}})
+                  }
+                }
+              }
+            })
+          } else if (res.status === 404) {
+            this.$dialog.error({
+              persistent: true,
+              title: 'Tidak dikenal',
+              text: `Kode barang yang Anda masukkan tidak dikenali`,
+            })
+          }
+        }).catch((err)=> {
+          console.log(err)
+        });
     },
     async onInit (promise) {
       try {
