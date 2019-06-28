@@ -179,7 +179,7 @@ export default {
     // Image Scale Percentage (1 - 100)
     quality: {
       type: Number,
-      default: 80
+      default: 70
     },
   },
   data() {
