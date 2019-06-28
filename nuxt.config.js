@@ -104,8 +104,4 @@ export default {
       home: '/'
     }
   },
-  manifest: {
-    name: 'Logger',
-    lang: 'id'
-  }
 }
