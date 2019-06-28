@@ -103,5 +103,5 @@ export default {
       callback: '/login',
       home: '/'
     }
-  },
+  }
 }

@@ -9,7 +9,7 @@
       <v-container grid-list-sm fluid>
         <v-layout>
           <v-flex>
-            <img src="/logo.png" style="width:100%"/>
+            <img src="/icon.png" style="width:100%"/>
           </v-flex>
         </v-layout>
       </v-container>
