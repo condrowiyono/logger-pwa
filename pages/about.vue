@@ -14,7 +14,7 @@
         </v-layout>
       </v-container>
       <p>
-        Dikembangkan dengan menggunakan Nuxt JS
+        Dikembangkan dengan menggunakan Nuxt JS, untuk kontak pengembang silakan kunjungi halaman <a href="https://github.com/condrowiyono">Github</a>
       </p>
     </v-container>
   </v-layout>
