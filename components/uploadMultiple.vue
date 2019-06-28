@@ -233,10 +233,11 @@ export default {
       this.isDragover = true;
     },
     createImage(file) {
-      console.log(file);
+      
       if (file.size > this.maxFileSize) {
-        this.$toasted.show('Ukuran File terlalu besar. Pastikan ukuran file tidak lebih dari 5 MB');
+        this.$emit('to-large');
       } else {
+        this.$emit('start-upload');
         //this also resize the image for upload
         const reader = new FileReader();
         const formData = new FormData();
@@ -270,7 +271,6 @@ export default {
               ctx.drawImage(img, 0, 0, width, height)
               let quality = this.quality ? (this.quality / 100) : 1
               let base64 = this.canvas.toDataURL('image/jpeg', quality)
-              console.log(base64);
 
               var newFile = this.dataURItoBlob(base64)
               const resized = new File([newFile], file.name ,{ type: file.type});
@@ -284,12 +284,14 @@ export default {
       }
     },
     editImage(file) {
+      
       if (file.size > this.maxFileSize) {
-        this.$toasted.show('Ukuran File terlalu besar. Pastikan ukuran file tidak lebih dari 5 MB');
+        this.$emit('to-large');
       } else {
+        this.$emit('start-upload');
         const reader = new FileReader();
         const formData = new FormData();
-        formData.append('file', file);
+        
         reader.onload = (e) => {
           const dataURI = e.target.result;
           if (dataURI) {
@@ -298,9 +300,30 @@ export default {
               this.images[this.currentIndexImage].name = file.name;
             }
           }
+          //draw scaled image and 
+            let canvas = document.createElement('canvas')
+            this.canvas = canvas
+            let ctx = this.canvas.getContext('2d')
+            let img = new Image()
+            img.src = dataURI
+            img.onload = (e) => {
+              let width = img.width
+              let height = img.height
+              this.canvas.setAttribute('width', width)
+              this.canvas.setAttribute('height', height)
+              ctx.drawImage(img, 0, 0, width, height)
+              let quality = this.quality ? (this.quality / 100) : 1
+              let base64 = this.canvas.toDataURL('image/jpeg', quality)
+
+              var newFile = this.dataURItoBlob(base64)
+              const resized = new File([newFile], file.name ,{ type: file.type});
+
+              formData.append('file', resized)
+              this.$emit('edit-image', formData, this.currentIndexImage, this.images);
+            }
         };
         reader.readAsDataURL(file);
-        this.$emit('edit-image', formData, this.currentIndexImage, this.images);
+        
       }
     },
     uploadFieldChange(e) {

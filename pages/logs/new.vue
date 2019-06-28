@@ -117,6 +117,8 @@
           <vue-upload-multiple-image
             idUpload="log"
             idEdit="logEdit"
+            @to-large="$dialog.message.error('Ukuran file terlalu besar', { position: 'bottom'})"
+            @start-upload="isUploading = true"
             @upload-success="logUploadImageSuccess"
             @before-remove="logBeforeRemove"
             @edit-image="logEditImage"
@@ -145,6 +147,20 @@
         </div>
       </v-form>
     </v-container>
+    <v-dialog
+      v-model="isUploading"
+      persistent
+    >
+      <v-card>
+        <v-card-text>
+          <v-progress-circular
+            indeterminate
+            color="primary"
+          ></v-progress-circular>
+          <div class="text-xs-center">Uploading</div>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
 </v-layout>
 </template>
 <script>
@@ -250,6 +266,7 @@ export default {
     },
     save() {
       if (this.$refs.form.validate()) {
+        this.isUploading = true;
         var params = {
           user_id: this.$auth.user.id,
           equipment_id: this.item.id,
@@ -264,6 +281,7 @@ export default {
         
         this.$store.dispatch('logs/create', params)
           .then((resp) => {
+            this.isUploading = true;
             this.$dialog.message.success('Data Log berhasil dimasukkan', { position: 'bottom'})
             this.$router.push('/?tab=history')
           })

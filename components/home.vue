@@ -7,7 +7,7 @@
 
         <v-layout row wrap text-xs-center class="mb-4">
             <v-flex xs3>
-                <v-card @click="onScanClick" ripple class="elevation-0" style="border-radius:5px;padding:">
+                <v-card @click="onScanClick" ripple class="elevation-1" style="border-radius:10px;padding:">
                     <v-card-text class="px-0">
                         <v-icon>camera_alt</v-icon>
                     </v-card-text>
@@ -17,13 +17,33 @@
                 </div>
             </v-flex>
             <v-flex xs3>
-                <v-card @click="onHistoryClick" ripple class="elevation-0" style="border-radius:5px;padding:">
+                <v-card @click="onHistoryClick" ripple class="elevation-1" style="border-radius:10px;padding:">
                     <v-card-text class="px-0">
                         <v-icon>history</v-icon>
                     </v-card-text>
                 </v-card>
                 <div class="my-2">
                     Riwayat
+                </div>
+            </v-flex>
+            <v-flex xs3>
+                <v-card :to="'/equipments?redirect=/'" ripple class="elevation-1" style="border-radius:10px;padding:">
+                    <v-card-text class="px-0">
+                        <v-icon>business</v-icon>
+                    </v-card-text>
+                </v-card>
+                <div class="my-2">
+                    Perlatan
+                </div>
+            </v-flex>
+            <v-flex xs3>
+                <v-card  ripple class="elevation-1" style="border-radius:10px;padding:">
+                    <v-card-text class="px-0">
+                        <v-icon>more_horiz</v-icon>
+                    </v-card-text>
+                </v-card>
+                <div class="my-2">
+                    Lainnya
                 </div>
             </v-flex>
         </v-layout>

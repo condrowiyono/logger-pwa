@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <toolbar 
-      :back="'/?tab=account'" 
+      :back="(redirect) ? redirect :'/?tab=account'" 
       :title="'Peralatan'"
       @on-back-click="onBack"
       @on-filter-click="onFilter"
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       bottom: false,
+      redirect: this.$route.query.redirect,
     }
   },
   computed: {

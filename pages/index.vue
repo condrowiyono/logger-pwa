@@ -18,6 +18,10 @@
             <v-btn flat color="primary">PROSES</v-btn>
           </v-toolbar>
           <qrcode-stream @decode="onDecode" @init="onInit" />
+          <v-progress-circular
+            indeterminate
+            v-if="ready"
+          ></v-progress-circular>
           <!-- <div style="width:379px;height:379px;background-color:aqua"/> -->
           <v-divider style="margin-top:10px" />
         </v-container>
@@ -104,7 +108,8 @@ export default {
       title: (this.$route.query.tab) ? this.$route.query.tab : 'Beranda',
       result: '',
       resultManual: '',
-      error: ''
+      error: '',
+      ready:false,
     }
   },
   methods: {
@@ -149,6 +154,7 @@ export default {
     async onInit (promise) {
       try {
         await promise
+        this.ready = true;
       } catch (error) {
         if (error.name === 'NotAllowedError') {
           this.error = "ERROR: you need to grant camera access permisson"

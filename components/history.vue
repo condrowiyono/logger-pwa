@@ -25,7 +25,7 @@
     </v-flex>
     <v-flex xs12>
       <p v-if="list<=0" class="text-xs-center">Tidak ada hasil ditemukan</p>
-      <p v-if="pagination.page >= Math.ceil(pagination.totalItems/pagination.rowsPerPage)" class="text-xs-center">Semua sudah ditampilkan</p>
+      <p v-else-if="pagination.page >= Math.ceil(pagination.totalItems/pagination.rowsPerPage)" class="text-xs-center">Semua sudah ditampilkan</p>
       <p v-else class="text-xs-center">
         <v-progress-circular
           :width="3"
