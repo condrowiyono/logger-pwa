@@ -22,7 +22,7 @@
       >
         <v-flex xs12 sm6 md4>
           <v-dialog
-            ref="dialog"
+            ref="dialogDate"
             v-model="modal"
             :return-value.sync="date"
             persistent
@@ -42,13 +42,13 @@
             <v-date-picker v-model="date" scrollable>
               <v-spacer></v-spacer>
               <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
-              <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialogDate.save(date)">OK</v-btn>
             </v-date-picker>
           </v-dialog>
         </v-flex>
         <v-flex xs12>
           <v-dialog
-            ref="dialog"
+            ref="dialogTime"
             v-model="modalTime"
             :return-value.sync="time"
             persistent
@@ -72,7 +72,7 @@
             >
               <v-spacer></v-spacer>
               <v-btn flat color="primary" @click="modalTime = false">Cancel</v-btn>
-              <v-btn flat color="primary" @click="$refs.dialog.save(time)">OK</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialogTime.save(time)">OK</v-btn>
             </v-time-picker>
           </v-dialog>
         </v-flex>

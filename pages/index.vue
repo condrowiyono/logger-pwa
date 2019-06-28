@@ -19,8 +19,9 @@
           </v-toolbar>
           <qrcode-stream @decode="onDecode" @init="onInit" />
           <v-progress-circular
+            class="text-xs-center"
             indeterminate
-            v-if="ready"
+            v-if="!ready"
           ></v-progress-circular>
           <!-- <div style="width:379px;height:379px;background-color:aqua"/> -->
           <v-divider style="margin-top:10px" />
