@@ -103,5 +103,9 @@ export default {
       callback: '/login',
       home: '/'
     }
+  },
+  manifest: {
+    name: 'Logger',
+    lang: 'id'
   }
 }

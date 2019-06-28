@@ -12,14 +12,9 @@
           >
             <v-list-tile-content>
               <v-list-tile-title>{{ item.equipment.name }}</v-list-tile-title>
-              <v-list-tile-sub-title class="text--primary">{{ item.user.name }} - <span class="grey--text text--darken-1">{{item.date + ' ' + item.time}}</span></v-list-tile-sub-title>
-              <v-list-tile-sub-title  >{{item.jobDesc}}</v-list-tile-sub-title>
+              <v-list-tile-sub-title class="text--primary">{{ item.jobDesc }}</v-list-tile-sub-title>
+              <v-list-tile-sub-title  ><span class="grey--text text--darken-1">{{item.date + ' ' + item.time}}</span></v-list-tile-sub-title>
             </v-list-tile-content>
-
-            <v-list-tile-action>
-              <v-list-tile-action-text>{{$moment(item.createdAt).fromNow()}}</v-list-tile-action-text>
-            </v-list-tile-action>
-
           </v-list-tile>
           <v-divider
             v-if="index + 1 < list.length"

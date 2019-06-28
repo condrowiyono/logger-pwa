@@ -106,6 +106,7 @@ import { forEach, findIndex, orderBy, cloneDeep } from 'lodash';
 import Popper from 'vue-popperjs';
 import 'vue-popperjs/dist/vue-popper.css';
 import VueImageLightboxCarousel from 'vue-image-lightbox-carousel';
+import base64toblob from 'base64toblob';
 
 export default {
 
@@ -175,6 +176,11 @@ export default {
       type: Number,
       default: 5242880,
     },
+    // Image Scale Percentage (1 - 100)
+    quality: {
+      type: Number,
+      default: 80
+    },
   },
   data() {
     return {
@@ -183,6 +189,7 @@ export default {
       isDragover: false,
       showLightbox: false,
       arrLightBox: [],
+      scaled : '',
     };
   },
   components: {
@@ -226,14 +233,17 @@ export default {
       this.isDragover = true;
     },
     createImage(file) {
+      console.log(file);
       if (file.size > this.maxFileSize) {
         this.$toasted.show('Ukuran File terlalu besar. Pastikan ukuran file tidak lebih dari 5 MB');
       } else {
+        //this also resize the image for upload
         const reader = new FileReader();
         const formData = new FormData();
-        formData.append('file', file);
+        
         reader.onload = (e) => {
-          const dataURI = e.target.result;
+          var dataURI = e.target.result;
+          console.log(dataURI);
           if (dataURI) {
             if (!this.images.length) {
               this.images.push({
@@ -245,7 +255,29 @@ export default {
                 name: file.name, path: dataURI, highlight: 0, default: 0, deleteUrl: '', imageId: '', uploadUrl: '',
               });
             }
-            this.$emit('upload-success', formData, this.images.length - 1, this.images);
+            
+            //draw scaled image and 
+            let canvas = document.createElement('canvas')
+            this.canvas = canvas
+            let ctx = this.canvas.getContext('2d')
+            let img = new Image()
+            img.src = dataURI
+            img.onload = (e) => {
+              let width = img.width
+              let height = img.height
+              this.canvas.setAttribute('width', width)
+              this.canvas.setAttribute('height', height)
+              ctx.drawImage(img, 0, 0, width, height)
+              let quality = this.quality ? (this.quality / 100) : 1
+              let base64 = this.canvas.toDataURL('image/jpeg', quality)
+              console.log(base64);
+
+              var newFile = this.dataURItoBlob(base64)
+              const resized = new File([newFile], file.name ,{ type: file.type});
+
+              formData.append('file', resized)
+              this.$emit('upload-success', formData, this.images.length - 1, this.images)
+            }
           }
         };
         reader.readAsDataURL(file);
@@ -344,6 +376,22 @@ export default {
         this.showLightbox = false;
       }
     },
+    dataURItoBlob(dataURI) {
+      // convert base64/URLEncoded data component to raw binary data held in a string
+      var byteString;
+      if (dataURI.split(',')[0].indexOf('base64') >= 0)
+          byteString = atob(dataURI.split(',')[1]);
+      else
+          byteString = unescape(dataURI.split(',')[1]);
+      // separate out the mime component
+      var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+      // write the bytes of the string to a typed array
+      var ia = new Uint8Array(byteString.length);
+      for (var i = 0; i < byteString.length; i++) {
+          ia[i] = byteString.charCodeAt(i);
+      }
+      return new Blob([ia], {type:mimeString});
+    }
   },
   watch: {
     dataImages: {

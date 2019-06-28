@@ -2,24 +2,21 @@
   <v-layout>
     <toolbar :back="'/?tab=account'" :title="'Petunjuk Penggunaan'" />
     <v-container>
-      <div class="title">Petunjuk Penggunaan</div>
-      <p>
-        Nuxt.js - is a framework for creating Universal Vue.js Applications.
-        Our goal is to create a framework flexible enough that you can use it as a main project base or in addition to your current project based on Node.js.
-        Nuxt.js presets all the configuration needed to make your development of a Vue.js Application more enjoyable.
-      </p>
-      <p>
-        Framework7 - is a free and open source HTML mobile framework to develop hybrid mobile apps or web apps with iOS or Android (Material) native look and feel. It is also an indispensable prototyping apps tool to show working app prototype as soon as possible in case you need to. Framework7 is created by Vladimir Kharlampidi (iDangero.us).
-      </p>
-      <p>
-        The main approach of the Framework7 is to give you an opportunity to create iOS and Android (Material) apps with HTML, CSS and JavaScript easily and clear. Framework7 is full of freedom. It doesn't limit your imagination or offer ways of any solutions somehow. Framework7 gives you freedom!
-      </p>
-      <p>
-        Framework7 is not compatible with all platforms. It is focused only on iOS and Android (Material) to bring the best experience and simplicity.
-      </p>
-      <p>
-        Nuxt7 is a Nuxt.js module which adds everything is needed to make a complete and fast PWA app using Framework7.
-      </p>
+     <div class="title mb-3">Langkah Awal</div>
+      <ol class="mb-3">
+          <li>Tambahkan aplikasi ke layar utama. Tekan tanda <v-icon>more_vert</v-icon>, kemudian pilih <span class="body-2">Add to homescreen</span>, dan klik OK</li>
+          <li>Buka aplikasi dari Home Screen</li>
+      </ol>
+      <div class="title mb-3">Langkah Scan</div>
+      <ol class="mb-3">
+          <li>Pilih menu scan melalui menu diatas atau tab di bawah <v-icon>camera_alt</v-icon>. Arahkan pada qr code yang tertera</li>
+          <li>Akan muncul konfirmasi barang yang akan dicatat log-nya. Klik lanjut untuk melanjutkan mengisi</li>
+          <li>Catat semua detail informasi sekaligus tambahkan beberapa foto. Kemudian klik simpan</li>
+      </ol>
+      <div class="title mb-3">Melihat riwayat</div>
+      <ol class="mb-3">
+          <li>Riwayat berisi data log yang telah Anda lakukan</li>
+      </ol>
     </v-container>
   </v-layout>
 </template>

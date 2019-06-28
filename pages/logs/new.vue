@@ -125,6 +125,15 @@
             :maxImage="5"
             primaryText="Gambar"
             />
+            <div v-if="isUploading">
+              <v-progress-circular
+                indeterminate
+                :size="24"
+                :width="2"
+                color="primary"
+              ></v-progress-circular>
+            Uploading
+            </div>
         </v-flex>
         <div style="justify-content:flex-end; display:flex" >
           <v-btn
@@ -252,9 +261,10 @@ export default {
           desc : this.desc,
           images : this.log.map(el=> el.imageId)
         }
-        console.log(params);
+        
         this.$store.dispatch('logs/create', params)
           .then((resp) => {
+            this.$dialog.message.success('Data Log berhasil dimasukkan', { position: 'bottom'})
             this.$router.push('/?tab=history')
           })
           .catch((resp) => {

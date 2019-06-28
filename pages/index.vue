@@ -2,49 +2,11 @@
   <v-layout>
     <toolbar :title="title" />
     <v-flex xs-12 >
+      <div v-if="tab== 'home'" style="margin-bottom:60px">
+        <home @scan-click="changeTab('scan')" @history-click="changeTab('history')" />
+      </div>
       <div v-if="tab== 'account'" style="margin-bottom:60px">
-        <v-list  subheader>
-          <v-subheader>Informasi Akun</v-subheader>
-          <v-list-tile :to="'/account'"  ripple="ripple">
-            <v-list-tile-content>
-              <v-list-tile-title>{{ $auth.user.name }}</v-list-tile-title>
-              <v-list-tile-sub-title>{{ $auth.user.phoneNumber }}</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile :to="'/change-password'" ripple="ripple">
-            <v-list-tile-content>
-              <v-list-tile-title>Ganti Password</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-        <v-divider/>
-        <v-list two-line subheader>
-          <v-subheader>Alat</v-subheader>
-          <v-list-tile :to="'/equipments'"  ripple="ripple">
-            <v-list-tile-content>
-              <v-list-tile-title>Peralatan</v-list-tile-title>
-              <v-list-tile-sub-title>Lihat semua peraltan</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-        <v-divider/>
-        <v-list>
-          <v-list-tile :to="'/help'" ripple="ripple">
-            <v-list-tile-content>
-              <v-list-tile-title>Petunjuk Penggunaan</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile :to="'/about'" ripple="ripple">
-            <v-list-tile-content>
-              <v-list-tile-title>Tentang Aplikasi</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile  @click="logout" ripple="ripple">
-            <v-list-tile-content>
-              <v-list-tile-title>Keluar</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
+        <account />
       </div>
       <div v-if="tab == 'scan'" style="margin-bottom:60px">
         <p class="error">{{ error }}</p>
@@ -131,9 +93,11 @@
 import { QrcodeStream } from 'vue-qrcode-reader';
 import {mapState} from 'vuex';
 import History from '~/components/history';
+import Account from '~/components/account';
+import Home from '~/components/home';
 
 export default {
-  components: { QrcodeStream, History },
+  components: { QrcodeStream, History, Account, Home },
   data () {
     return {
       tab: (this.$route.query.tab) ? this.$route.query.tab : 'home',
@@ -145,11 +109,9 @@ export default {
   },
   methods: {
     changeTab(to) {
+      this.tab = to;
       this.$router.replace({ path: '/', query: { tab: to } });
       this.title = to;
-    },
-    async logout() {
-      await this.$auth.logout();
     },
     onDecode(result) {
       this.result = result;

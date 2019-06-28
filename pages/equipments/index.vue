@@ -15,7 +15,7 @@
       <v-layout row wrap>
         <template v-for="(item, index) in list">
           <v-flex xs12 md12 lg12 :key="index">
-            <v-card :to="'/equipments/'+item.id">
+            <v-card :to="'/equipments/'+item.id" ripple>
               <v-card-title primary-title>{{ item.name }} </v-card-title>
               <v-card-text>{{ item.desc }} </v-card-text>
             </v-card>

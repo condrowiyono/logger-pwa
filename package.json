@@ -1,5 +1,5 @@
 {
-  "name": "logger-pwa",
+  "name": "logger",
   "version": "1.0.0",
   "description": "PWA untuk logger",
   "author": "condrowiyono",
@@ -19,6 +19,7 @@
     "@nuxtjs/moment": "^1.2.0",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/vuetify": "0.5.5",
+    "base64toblob": "^0.0.2",
     "lodash.assign": "^4.2.0",
     "lodash.merge": "^4.6.1",
     "nuxt": "^2.0.0",

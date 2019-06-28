@@ -4,7 +4,17 @@
     <v-container>
       <div class="title">Tentang Aplikasi</div>
       <p>
-        Nuxt7 is a Nuxt.js module which adds everything is needed to make a complete and fast PWA app using Framework7.
+        Aplikasi dikembangkan untuk membantu mencatatan log peralatan dilingkungan Bandara Pattimura Ambon
+      </p>
+      <v-container grid-list-sm fluid>
+        <v-layout>
+          <v-flex>
+            <img src="/logo.png" style="width:100%"/>
+          </v-flex>
+        </v-layout>
+      </v-container>
+      <p>
+        Dikembangkan dengan menggunakan Nuxt JS
       </p>
     </v-container>
   </v-layout>
